@@ -1,25 +1,23 @@
 import { useState } from "react";
 
 export function ArrayMurray() {
-  const [
-    murray,
-    removeFirst,
-    removeLetter,
-    addToStart,
-    addToEnd,
-    clear,
-    reset,
-  ] = useState(["A", "B", "C"]);
+  const [murray, setArrayMurray] = useState(["A", "B", "C"]);
 
   const [valueToAdd, setValuetToAdd] = useState("");
   const [valueToRemove, setValuetToRemove] = useState("");
 
+  function removeFirst() {
+    setArrayMurray((current) => [, ...current]);
+  }
+
+  function removeLast() {
+    setArrayMurray((current) => [...current]);
+  }
+
   return (
     <div>
       <h1>{murray}</h1>
-      <button onClick={() => removeFirst(([, ...rest]) => rest)}>
-        Remove First
-      </button>
+      <button onClick={removeFirst}>Remove First</button>
       <button
         onClick={() => addToStart((currentMurray) => ["Z", ...currentMurray])}
       >
